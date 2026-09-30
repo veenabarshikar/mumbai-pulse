@@ -1,0 +1,260 @@
+/* Marine Drive day/night */
+.md-day,
+.md-night {
+    transition: opacity .8s ease
+}
+
+.md-night {
+    opacity: 0
+}
+
+.dark .md-night {
+    opacity: 1
+}
+
+.dark .md-day {
+    opacity: 0
+}
+
+.star {
+    animation: tw 3s ease-in-out infinite alternate
+}
+
+@keyframes tw {
+    from {
+        opacity: .25
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* Glowing buttons (colours from your reference cards) */
+.btn,
+.dark .btn {
+    --g: #8b35f5;
+    background: var(--g);
+    color: #fff
+}
+
+.btn-acc,
+.dark .btn-acc {
+    --g: #ff9a1c;
+    background: var(--g);
+    color: #1d1200
+}
+
+.btn-green,
+.dark .btn-green {
+    --g: #3ee800;
+    background: var(--g);
+    color: #0a2200
+}
+
+.btn-pink,
+.dark .btn-pink {
+    --g: #ff5cf0;
+    background: var(--g);
+    color: #2a0027
+}
+
+.btn,
+.btn-acc,
+.btn-green,
+.btn-pink {
+    border-radius: 9999px;
+    font-weight: 700;
+    box-shadow: 0 0 14px -2px var(--g), 0 0 32px -8px var(--g);
+    transition: box-shadow .2s, transform .2s
+}
+
+.btn:hover:not([disabled]) {
+    background: var(--g);
+    transform: translateY(-2px);
+    box-shadow: 0 0 22px 2px var(--g), 0 0 52px -2px var(--g)
+}
+
+.btn.btn-ghost,
+.dark .btn.btn-ghost {
+    background: transparent;
+    color: inherit;
+    border: 1px solid #8b35f5aa;
+    box-shadow: none
+}
+
+.btn.btn-ghost:hover:not([disabled]) {
+    background: #8b35f522;
+    box-shadow: 0 0 16px -2px #8b35f5
+}
+
+.btn[disabled] {
+    box-shadow: none
+}
+
+.cat-tile {
+    box-shadow: 0 0 22px -4px var(--g);
+    transition: transform .2s, box-shadow .2s
+}
+
+.cat-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 34px 0 var(--g)
+}
+
+/* Glowing background */
+.glow-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none
+}
+
+.glow-bg i {
+    position: absolute;
+    width: 45vmax;
+    height: 45vmax;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .25;
+    animation: drift 22s ease-in-out infinite alternate
+}
+
+.glow-bg i:nth-child(1) {
+    background: #8b35f5;
+    top: -15%;
+    left: -10%
+}
+
+.glow-bg i:nth-child(2) {
+    background: #ff5cf0;
+    bottom: -20%;
+    right: -10%;
+    animation-delay: -8s
+}
+
+.glow-bg i:nth-child(3) {
+    background: #ff9a1c;
+    top: 40%;
+    left: 40%;
+    opacity: .12;
+    animation-delay: -14s
+}
+
+.dark .glow-bg i {
+    opacity: .4
+}
+
+.dark .glow-bg i:nth-child(3) {
+    opacity: .2
+}
+
+@keyframes drift {
+    to {
+        transform: translate(8vw, 6vh) scale(1.15)
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .glow-bg i,
+    .star {
+        animation: none
+    }
+
+    .md-day,
+    .md-night,
+    .btn,
+    .cat-tile {
+        transition: none
+    }
+}
+
+/* Navbar + footer: black in light mode, white in dark mode */
+.site-bar {
+    background: #000000f2;
+    color: #fff
+}
+
+.dark .site-bar {
+    background: #fffffff2;
+    color: #000
+}
+
+.site-bar .accent {
+    color: #ff9a1c
+}
+
+.dark .site-bar .accent {
+    color: #8b35f5
+}
+
+.dark .site-bar a:hover,
+.dark .site-bar button:hover {
+    background: #0000001a
+}
+
+/* Hero text: black in light mode, white in dark mode */
+.hero-copy {
+    color: #0b1230
+}
+
+.dark .hero-copy {
+    color: #fff
+}
+
+.hero-shade {
+    background: linear-gradient(90deg, #ffffffc0, #ffffff59 45%, transparent)
+}
+
+.dark .hero-shade {
+    background: linear-gradient(90deg, #0b1230cc, #0b123066 45%, transparent)
+}
+
+/* Sparkle (day) and glow (night) */
+.spk {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: spk 2.4s ease-in-out infinite
+}
+
+@keyframes spk {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(.3)
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+.glowp {
+    animation: gp 2.8s ease-in-out infinite alternate
+}
+
+@keyframes gp {
+    from {
+        opacity: .55
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .spk {
+        animation: none;
+        opacity: .8
+    }
+
+    .glowp {
+        animation: none
+    }
+}
